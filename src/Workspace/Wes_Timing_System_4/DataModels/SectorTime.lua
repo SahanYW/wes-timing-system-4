@@ -1,3 +1,5 @@
+local _config = require(script.Parent.Parent._Config)
+
 local SectorTime = {}
 SectorTime.__index = SectorTime
 
@@ -10,7 +12,11 @@ function SectorTime.new(sectorTime: number, state: number, player: Player | nil)
 	sector.State = state
 
 	if player then
-		sector.DisplayName = player.DisplayName
+		if _config.ShowDisplayNames then
+			sector.DisplayName = player.DisplayName
+		else
+			sector.DisplayName = player.Name
+		end
 		sector.UserId = player.UserId
 	end
 	

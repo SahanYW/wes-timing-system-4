@@ -1,4 +1,5 @@
 local SectorTime = require(script.Parent.SectorTime)
+local _config = require(script.Parent.Parent._Config)
 
 local LapTime = {}
 LapTime.__index = LapTime
@@ -15,7 +16,11 @@ function LapTime.new(sector1: table, sector2: table, sector3: table, lap: number
 	lapTime.State = state
 	
 	if player then
-		lapTime.DisplayName = player.DisplayName
+		if _config.ShowDisplayNames then
+			lapTime.DisplayName = player.DisplayName
+		else
+			lapTime.DisplayName = player.Name
+		end
 		lapTime.UserId = player.UserId
 	end
 	

@@ -1,4 +1,5 @@
 local LapTime = require(script.Parent.LapTime)
+local _config = require(script.Parent.Parent._Config)
 
 local PlayerData = {}
 PlayerData.__index = PlayerData
@@ -7,8 +8,11 @@ function PlayerData.new(player: Player)
 	
 	local playerData = {}
 	setmetatable(playerData, PlayerData)
-	
-	playerData.DisplayName = player.DisplayName
+	if _config.ShowDisplayNames then
+		playerData.DisplayName = player.DisplayName
+	else
+		playerData.DisplayName = player.Name
+	end
 	playerData.UserId = player.UserId
 	playerData.CurrentLap = LapTime.new()
 	playerData.CornerCuts = 0

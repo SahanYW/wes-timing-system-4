@@ -22,6 +22,8 @@ local config = {
 	CornerCutCooldownSeconds = 1,
 	-- Whether or not a popup appears per cut, rather than once per lap
 	PopupEverycut = false,
+	-- Whether or not the name displayed on the leaderboard is the username or display name
+	ShowDisplayNames = false,
 
 	-- Anti Cheat
 	-- Whether anti-cheat should be used
